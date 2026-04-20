@@ -1,0 +1,17 @@
+export const ROUTES = {
+  LOGIN: "/login",
+  DASHBOARD: "/dashboard",
+  ORDERS: "/orders",
+  ORDER_DETAIL: (id: string) => `/orders/${id}`,
+  ORDER_EDIT: (id: string) => `/orders/${id}/edit`,
+  ORDER_NEW: "/orders/new",
+  PRODUCTS: "/products",
+  PRODUCT_DETAIL: (id: string) => `/products/${id}`,
+  PRODUCT_EDIT: (id: string) => `/products/${id}/edit`,
+  PRODUCT_NEW: "/products/new",
+  CUSTOMERS: "/customers",
+  CUSTOMER_DETAIL: (id: string) => `/customers/${id}`,
+  CUSTOMER_EDIT: (id: string) => `/customers/${id}/edit`,
+  CUSTOMER_NEW: "/customers/new",
+  SETTINGS: "/settings",
+} as const;
