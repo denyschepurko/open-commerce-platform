@@ -87,4 +87,23 @@ export const mockProductRepository: ProductRepository = {
   async findLowStock() {
     return products.filter(isLowStock).sort((a, b) => a.stock - b.stock);
   },
+
+  async create(product: Product) {
+    products.push(product);
+    return product;
+  },
+
+  async update(id: string, updates: Partial<Product>) {
+    const index = products.findIndex((p) => p.id === id);
+    if (index === -1) return null;
+    Object.assign(products[index], updates);
+    return products[index];
+  },
+
+  async delete(id: string) {
+    const index = products.findIndex((p) => p.id === id);
+    if (index === -1) return false;
+    products.splice(index, 1);
+    return true;
+  },
 };

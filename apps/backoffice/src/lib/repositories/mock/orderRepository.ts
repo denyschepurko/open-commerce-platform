@@ -177,4 +177,23 @@ export const mockOrderRepository: OrderRepository = {
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       );
   },
+
+  async create(order: Order) {
+    orders.push(order);
+    return order;
+  },
+
+  async update(id: string, updates: Partial<Order>) {
+    const index = orders.findIndex((o) => o.id === id);
+    if (index === -1) return null;
+    Object.assign(orders[index], updates);
+    return orders[index];
+  },
+
+  async delete(id: string) {
+    const index = orders.findIndex((o) => o.id === id);
+    if (index === -1) return false;
+    orders.splice(index, 1);
+    return true;
+  },
 };

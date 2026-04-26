@@ -18,12 +18,18 @@ export interface OrderRepository {
   >;
   getRevenueByPeriod(): Promise<{ label: string; revenue: number }[]>;
   findByCustomerId(customerId: string): Promise<Order[]>;
+  create(order: Order): Promise<Order>;
+  update(id: string, updates: Partial<Order>): Promise<Order | null>;
+  delete(id: string): Promise<boolean>;
 }
 
 export interface ProductRepository {
   findAll(params?: QueryParams): Promise<PaginatedResult<Product>>;
   findById(id: string): Promise<Product | null>;
   findLowStock(): Promise<Product[]>;
+  create(product: Product): Promise<Product>;
+  update(id: string, updates: Partial<Product>): Promise<Product | null>;
+  delete(id: string): Promise<boolean>;
 }
 
 export interface CategoryRepository {
@@ -35,6 +41,9 @@ export interface CustomerRepository {
   findAll(params?: QueryParams): Promise<PaginatedResult<Customer>>;
   findById(id: string): Promise<Customer | null>;
   count(): Promise<number>;
+  create(customer: Customer): Promise<Customer>;
+  update(id: string, updates: Partial<Customer>): Promise<Customer | null>;
+  delete(id: string): Promise<boolean>;
 }
 
 export interface UserRepository {
